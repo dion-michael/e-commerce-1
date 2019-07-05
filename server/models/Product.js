@@ -8,24 +8,30 @@ const productSchema = new Schema({
     price: Number,
     stock: Number,
     tags: Array,
-    image: String
+    image: String,
+    section: String
 })
 productSchema.plugin(URLSlugs('name', {
     field: 'slug'
 }))
 
 productSchema.post('findOneAndDelete', function (deleted, next) {
-    User.updateMany({}, {
-        $pull: {
-            'cart': {
-                'productId': {
-                    $in: deleted._id
+    console.log(deleted);
+    if (!deleted) {
+        next()
+    } else {
+        User.updateMany({}, {
+            $pull: {
+                'cart': {
+                    'productId': {
+                        $in: deleted._id
+                    }
                 }
             }
-        }
-    }).then(success => {
-        next()
-    }).catch(next)
+        }).then(success => {
+            next()
+        }).catch(next)
+    }
 })
 const Product = mongoose.model('Product', productSchema)
 

@@ -2,7 +2,7 @@
   <div class="card">
     <div class="card-image">
       <figure class="image is-4by3">
-        <img class="fit" alt="Placeholder image" :src="product.image" />
+        <img class="fit" alt="Placeholder image" :src="product.image" @click="$emit('imageclicked', product._id)" />
       </figure>
     </div>
     <div class="card-content">
@@ -17,7 +17,7 @@
 
       <div class="content">
         <p class="buttons">
-          <a @click="addToCart(product._id)" class="button is-small">add to cart</a>
+          <a @click="addToCart(product._id)" class="button is-small" v-if="!hidecart">add to cart</a>
         </p>
       </div>
     </div>
@@ -27,7 +27,7 @@
 <script>
 import { Toast } from "buefy/dist/components/toast";
 export default {
-  props: ["product"],
+  props: ["product", "hidecart"],
   methods: {
     addToCart(productId) {
       this.$store.dispatch("addCart", productId);

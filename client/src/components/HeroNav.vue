@@ -12,7 +12,7 @@
             class="title is-size-2 is-size-4-mobile"
           >“Being perfectly well-dressed gives one a tranquillity that no religion can bestow.”</h1>
           <h2 class="subtitle is-size-5">Ralph Waldo Emerson</h2>
-          <a class="button" href="#shop">Start Shopping</a>
+          <router-link class="button" to="/shop">Start Shopping</router-link>
         </div>
       </div>
     </div>

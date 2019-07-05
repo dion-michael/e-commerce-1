@@ -47,9 +47,22 @@ class productController {
 
     static async update(req, res, next) {
         try {
-            res.json(await Product.findOneAndUpdate(req.params.id, req.body, {
+            console.log(req.body);
+            console.log(req.params.productId);
+            let update = await Product.findByIdAndUpdate(req.params.productId, {
+                $set: {
+                    name: req.body.name,
+                    description: req.body.description,
+                    price: req.body.price,
+                    stock: req.body.stock,
+                    section: req.body.section,
+                    image: req.body.image
+                }
+            }, {
                 new: true
-            }))
+            })
+            console.log(update, '========== 55 ===========');
+            res.json(update)
         } catch (error) {
             next(error)
         }
@@ -58,6 +71,7 @@ class productController {
     static async delete(req, res, next) {
         try {
             console.log('masuk');
+            console.log(req.params.productId);
             res.json(await Product.findByIdAndDelete(req.params.productId))
         } catch (error) {
             next(error)

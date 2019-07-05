@@ -102,7 +102,6 @@
                     <strong>{{cartTotal | numFormat}}</strong>
                   </span>
                 </div>
-                <a class="button navbar-item is-success is-fullwidth has-text-centered">CHECKOUT</a>
                 <router-link to="/cart">
                   <a class="navbar-item">Go to cart</a>
                 </router-link>

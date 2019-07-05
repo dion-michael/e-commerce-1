@@ -197,6 +197,70 @@ export default new Vuex.Store({
           reject(err)
         })
       })
+    },
+    deleteItem({
+      commit
+    }, productId) {
+      return new Promise((resolve, reject) => {
+        api({
+          url: "/products/" + productId,
+          method: "DELETE",
+          headers: {
+            token: localStorage.getItem("token")
+          }
+        }).then(({
+          data
+        }) => {
+          console.log(data);
+          resolve(data)
+        }).catch(err => {
+          reject(err)
+        })
+      })
+    },
+    uploadImg({
+      dispatch,
+      commit
+    }, file) {
+      console.log(file);
+      let formData = new FormData()
+      formData.append('image', file)
+      return new Promise((resolve, reject) => {
+        api({
+          url: '/upload',
+          method: 'POST',
+          headers: {
+            token: localStorage.getItem('token')
+          },
+          data: formData
+        }).then(({
+          data
+        }) => {
+          resolve(data.link)
+        }).catch(err => {
+          reject(err)
+        })
+      })
+    },
+    updateProduct({
+      dispatch
+    }, product) {
+      console.log(product);
+      api({
+        url: "/products/" + product.productId,
+        method: "PUT",
+        data: product.data,
+        headers: {
+          token: localStorage.getItem('token')
+        }
+      }).then(({
+        data
+      }) => {
+        console.log(data);
+        dispatch('getAllProducts')
+      }).catch(err => {
+        console.log(err);
+      })
     }
   }
 });

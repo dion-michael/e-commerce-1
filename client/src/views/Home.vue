@@ -2,15 +2,6 @@
   <div class="home">
     <HeroNav />
     <div class="container" id="#shop">
-      <section style="padding: 20px">
-        <h1 class="has-text-centered title">FEATURED PRODUCTS</h1>
-      </section>
-      <section>
-        <tile />
-      </section>
-      <section style="padding: 20px">
-        <h1 class="has-text-centered title">OUR PRODUCTS</h1>
-      </section>
       <div class="home-content">
         <carousel :items="5" :margin="20" :loop="true">
           <div v-for="(category, i) in categories" :key="i">

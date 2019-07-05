@@ -16,6 +16,7 @@
     "swiper": "^4.5.0",
     "vue": "^2.6.10",
     "vue-filter-number-format": "^1.0.3",
+    "vue-image-upload-resize": "^2.0.4",
     "vue-moment": "^4.0.0",
     "vue-number-picker": "0.0.1",
     "vue-owl-carousel": "^2.0.3",

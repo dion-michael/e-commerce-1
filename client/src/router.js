@@ -6,6 +6,7 @@ import Login from "./views/Login.vue"
 import Cart from "./views/Cart.vue"
 import transactions from "./views/transactions.vue"
 import admin from "./views/Admin.vue"
+import editcard from "./components/editcard.vue"
 
 Vue.use(Router);
 
@@ -48,7 +49,11 @@ export default new Router({
     {
       path: "/admin",
       name: "admin page",
-      component: admin
+      component: admin,
+      children: [{
+        path: ':productId/edit',
+        component: editcard
+      }]
     }
   ]
 });

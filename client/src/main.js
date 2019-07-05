@@ -6,7 +6,9 @@ import Buefy from 'buefy'
 import 'buefy/dist/buefy.css'
 import VueScrollReveal from 'vue-scroll-reveal'
 import numFormat from 'vue-filter-number-format';
+import ImageUploader from 'vue-image-upload-resize'
 
+Vue.use(ImageUploader)
 Vue.use(require('vue-moment'));
 Vue.filter('numFormat', numFormat)
 Vue.use(VueScrollReveal)
